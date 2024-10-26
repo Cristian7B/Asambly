@@ -13,19 +13,6 @@ class Asamblea(models.Model):
     def __str__(self):
         return self.tema
 
-
-class Votacion(models.Model):
-    id_votacion = models.AutoField(primary_key=True)
-    id_asamblea = models.ForeignKey(Asamblea, on_delete=models.CASCADE, related_name='votaciones')
-    enunciado_votacion = models.CharField(max_length=100)
-
-    class Meta:
-        db_table = 'votaciones'
-
-    def __str__(self):
-        return self.enunciado_votacion
-
-
 class Participante(models.Model):
     codigo_estudiantil = models.AutoField(primary_key=True)  
     nombre = models.CharField(max_length=30)
@@ -36,7 +23,6 @@ class Participante(models.Model):
 
     def __str__(self):
         return self.nombre
-
 
 class AsambleaParticipante(models.Model):
     id_asam_participantes = models.AutoField(primary_key=True)
@@ -49,6 +35,16 @@ class AsambleaParticipante(models.Model):
     def __str__(self):
         return f'{self.id_asamblea} - {self.codigo_estudiantil}'
 
+class Votacion(models.Model):
+    id_votacion = models.AutoField(primary_key=True)
+    id_asamblea = models.ForeignKey(Asamblea, on_delete=models.CASCADE, related_name='votaciones')
+    enunciado_votacion = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'votaciones'
+
+    def __str__(self):
+        return self.enunciado_votacion
 
 class Intervencion(models.Model):
     id_intervencion = models.AutoField(primary_key=True)
