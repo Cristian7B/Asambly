@@ -26,8 +26,8 @@ class Participante(models.Model):
 
 class AsambleaParticipante(models.Model):
     id_asam_participantes = models.AutoField(primary_key=True)
-    id_asamblea = models.ForeignKey(Asamblea, on_delete=models.CASCADE, related_name='asamblea_participantes')
-    codigo_estudiantil = models.ForeignKey(Participante, on_delete=models.CASCADE, related_name='asamblea_participantes')
+    id_asamblea = models.ForeignKey(Asamblea, on_delete=models.CASCADE, related_name='asamblea_participantes', db_column="id_asamblea")
+    codigo_estudiantil = models.ForeignKey(Participante, on_delete=models.CASCADE, related_name='asamblea_participantes', db_column="codigo_estudiantil")
 
     class Meta:
         db_table = 'asamblea_participantes'
@@ -37,7 +37,7 @@ class AsambleaParticipante(models.Model):
 
 class Votacion(models.Model):
     id_votacion = models.AutoField(primary_key=True)
-    id_asamblea = models.ForeignKey(Asamblea, on_delete=models.CASCADE, related_name='votaciones')
+    id_asamblea = models.ForeignKey(Asamblea, on_delete=models.CASCADE, related_name='votaciones', db_column="id_asamblea")
     enunciado_votacion = models.CharField(max_length=100)
 
     class Meta:
@@ -50,7 +50,7 @@ class Intervencion(models.Model):
     id_intervencion = models.AutoField(primary_key=True)
     informacion_intervencion = models.CharField(max_length=500)
     estado_intervencion = models.CharField(max_length=15)
-    codigo_estudiantil = models.ForeignKey(Participante, on_delete=models.CASCADE, related_name='intervenciones')
+    codigo_estudiantil = models.ForeignKey(Participante, on_delete=models.CASCADE, related_name='intervenciones', db_column="codigo_estudiantil")
 
     class Meta:
         db_table = 'intervenciones'
@@ -61,7 +61,7 @@ class Intervencion(models.Model):
 
 class Opcion(models.Model):
     id_opcion = models.AutoField(primary_key=True)
-    id_votacion = models.ForeignKey(Votacion, on_delete=models.CASCADE, related_name='opciones')
+    id_votacion = models.ForeignKey(Votacion, on_delete=models.CASCADE, related_name='opciones', db_column="id_votacion")
     enunciado_opcion = models.CharField(max_length=100)
 
     class Meta:
@@ -73,7 +73,7 @@ class Opcion(models.Model):
 
 class Voto(models.Model):
     id_voto = models.AutoField(primary_key=True)
-    id_opcion = models.ForeignKey(Opcion, on_delete=models.CASCADE, related_name='votos')
+    id_opcion = models.ForeignKey(Opcion, on_delete=models.CASCADE, related_name='votos', db_column="id_opcion")
 
     class Meta:
         db_table = 'voto'
