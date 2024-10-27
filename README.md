@@ -1,3 +1,5 @@
+<img src="./Aditionals/LogoFinal.svg" width="100px"/>
+
 # Asambly - Gestión de Asambleas Universitarias
 
 Este proyecto es una API para gestionar asambleas universitarias de manera eficiente, facilitando la creación, modificación, consulta y eliminación de asambleas, participantes y sus votaciones. Es un proyecto CRUD desarrollado utilizando Django y Django REST Framework.
