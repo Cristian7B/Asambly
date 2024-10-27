@@ -35,8 +35,8 @@ class AsambleaParticipanteSerializer(serializers.ModelSerializer):
 
 class AsambleaAllSerializer(serializers.ModelSerializer):
     participantes_data = AsambleaParticipanteSerializer(many=True, source='asamblea_participantes', read_only=True)
-
+    votaciones_data = VotacionesSerializer(many=True, read_only=True, source='votaciones')
     class Meta:
         model = Asamblea
-        fields = ['tema', 'estado', 'informacion_adicional', 'fecha', 'participantes_data']
+        fields = ['tema', 'estado', 'informacion_adicional', 'fecha', 'participantes_data', 'votaciones_data']
 
