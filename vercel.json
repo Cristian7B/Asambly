@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "Asambly/apiAsambly/wsgi.py",
+        "src": "Asambly/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb" }
       }
@@ -10,7 +10,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "Asambly/apiAsambly/wsgi.py"
+        "dest": "Asambly/wsgi.py"
       }
     ],
     "env": {
