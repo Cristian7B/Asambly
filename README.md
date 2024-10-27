@@ -52,8 +52,9 @@ python manage.py runserver
 - **Modificar una asamblea:** Enviar una solicitud **PUT** a /api/asambleas/{id_asamblea}/ con los datos actualizados.
   
 - **Eliminar una asamblea:** Enviar una solicitud **DELETE** a /api/delete-asamblea/ para eliminar una asamblea y sus datos relacionados.
-  > [!NOTE] 
-  Además de eliminar una asamblea completa, la API permite eliminar de forma individual los participantes y votaciones asociados sin necesidad de borrar la asamblea en su totalidad.
+
+> [!NOTE] 
+Además de eliminar una asamblea completa, la API permite eliminar de forma individual los participantes y votaciones asociados sin necesidad de borrar la asamblea en su totalidad.
 
 ## Contribuciones
 
