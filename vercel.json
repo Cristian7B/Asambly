@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "Asambly/Asambly/wsgi.py",
+        "src": "Asambly/apiAsambly/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb" }
       }
@@ -10,8 +10,11 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "Asambly/Asambly/wsgi.py"
+        "dest": "Asambly/apiAsambly/wsgi.py"
       }
-    ]
-}
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "Asambly.settings"
+    }
+  }
   
