@@ -27,7 +27,7 @@ class AsambleaGeneralSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         participantes_data = validated_data.pop('participantes_data')
-        votaciones_data = validated_data.pop('votaciones_data', [])
+        votaciones_data = validated_data.pop('votaciones_data', []) 
         
         asamblea = Asamblea.objects.create(**validated_data)
 
