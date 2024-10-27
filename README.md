@@ -49,11 +49,11 @@ python manage.py runserver
 ## Endpoints Disponiblea de Asambly ⚫
 - **Crear una asamblea:** Enviar una solicitud **POST** a /api/creat-asamblea/ con los datos de la asamblea, participantes, mociones y votaciones.
   
-- **Buscar asambleas:** Enviar una solicitud **GET** a /api/get-asamblea/ para obtener la lista de asambleas existentes. Añade el **ID** de la asamblea al final de la url.
+- **Buscar asambleas:** Enviar una solicitud **GET** a /api/get-asamblea/{id_asamblea}/ para obtener la lista de asambleas existentes. Añade el **ID** de la asamblea al final de la url.
   
-- **Modificar una asamblea:** Enviar una solicitud **PUT** a /api/asambleas/{id_asamblea}/ con los datos actualizados.
+- **Modificar una asamblea:** Enviar una solicitud **PUT** a /api/update-asamblea/{id_asamblea}/ con los datos actualizados.
   
-- **Eliminar una asamblea:** Enviar una solicitud **DELETE** a /api/delete-asamblea/ para eliminar una asamblea y sus datos relacionados.
+- **Eliminar una asamblea:** Enviar una solicitud **DELETE** a /api/delete-asamblea/{id_asamblea}/ para eliminar una asamblea y sus datos relacionados.
 
 > [!NOTE] 
 Además de eliminar una asamblea completa, la API permite eliminar de forma individual los participantes y votaciones asociados sin necesidad de borrar la asamblea en su totalidad.
