@@ -68,3 +68,51 @@ class AsambleaGeneralSerializer(serializers.ModelSerializer):
             )
 
         return asamblea
+
+    def update(self, instance, validated_data):
+        instance.tema = validated_data.get('tema', instance.tema)
+        instance.estado = validated_data.get('estado', instance.estado)
+        instance.informacion_adicional = validated_data.get('informacion_adicional', instance.informacion_adicional)
+        instance.fecha = validated_data.get('fecha', instance.fecha)
+        instance.save()
+
+        participantes_data = validated_data.get('participantes_data', [])
+        votaciones_data = validated_data.get('votaciones_data', [])
+        
+        for votacion_data in votaciones_data:
+            votacion, _ = Votacion.objects.update_or_create(
+                id_asamblea=instance,
+                enunciado_votacion=votacion_data.get("enunciado_votacion"),
+            )
+            
+            opciones_data = votacion_data.get("opciones", [])
+            for opcion_data in opciones_data:
+                Opcion.objects.update_or_create(
+                    id_votacion=votacion,
+                    **opcion_data
+                )
+
+        for participante in participantes_data:
+            codigo_estudiantil = participante.get("codigo_estudiantil")
+            participante_creado, _ = Participante.objects.get_or_create(
+                codigo_estudiantil=codigo_estudiantil,
+                defaults={
+                    "nombre": participante.get("nombre"),
+                    "tipo_participante": participante.get("tipo_participante")
+                }
+            )
+            
+            intervenciones = participante.get("intervencion", [])
+            for intervencion_data in intervenciones:
+                Intervencion.objects.update_or_create(
+                    codigo_estudiantil=participante_creado,
+                    **intervencion_data
+                )
+
+            AsambleaParticipante.objects.update_or_create(
+                id_asamblea=instance,
+                codigo_estudiantil=participante_creado
+            )
+
+
+        return instance

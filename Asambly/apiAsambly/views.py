@@ -91,3 +91,18 @@ class DeleteOpcionFromVotacion(APIView):
             
         except Asamblea.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+class UpdateAsamblea(APIView):
+    def put(self, request, pk):
+        try:
+            asamblea = Asamblea.objects.get(pk=pk)
+            serializer = AsambleaGeneralSerializer(asamblea, data=request.data)
+            
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        except Asamblea.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
