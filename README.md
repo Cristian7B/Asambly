@@ -1,4 +1,4 @@
-<img src="./Aditionals/LogoFinal.svg" width="100px"/>
+<img src="./Aditionals/LogoFinal.svg" width="150px"/>
 
 # Asambly - Gestión de Asambleas Universitarias
 
