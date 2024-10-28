@@ -4,6 +4,9 @@
 
 Este proyecto es una API para gestionar asambleas universitarias de manera eficiente, facilitando la creación, modificación, consulta y eliminación de asambleas, participantes y sus votaciones. Es un proyecto CRUD desarrollado utilizando Django y Django REST Framework.
 
+>[!IMPORTANT]
+Revista el funcionamiento del proyecto en la siguiente [url](https://github.com/Cristian7B/Asambly/blob/main/Aditionals/FuncionamientoProyecto.pdf). Allí puedes ver todas las funcionalidades en acción.
+
 ## Características del Proyecto
 
 - **CRUD completo** para la gestión de asambleas.
